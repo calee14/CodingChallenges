@@ -15,6 +15,46 @@ The following test should pass:
 node = Node('root', Node('left', Node('left.left')), Node('right'))
 assert deserialize(serialize(node)).left.left.val == 'left.left'
 '''
+# My First Answer
+# Failed
+class Node:
+    def __init__(self, val, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right   
+# def serialize(root):
+#   if root.left:
+#     serialize(root.left)
+#   print(root.val)
+#   if root.right:
+#     serialize(root.right)
+def serialize(root):
+  res = []
+  if root:
+    res.append(root.val)
+    res = res + serialize(root.left)
+    res = res + serialize(root.right)
+  else:
+    res.append(None)
+  return res
+def deserialize(s, i=0):
+  res = Node(s[i])
+  if s:
+    left_side = s[1:len(s)//2]
+    right_side = s[(len(s)//2)+1:]
+    print(left_side, right_side)
+    if len(left_side) == 1:
+      return res
+    if len(right_side) == 1:
+      return res
+    res.left = deserialize(left_side,i)
+    res.right = deserialize(right_side, i)
+  return res
+
+node = Node('root', Node('left', Node('left.left'), Node('left.right')), Node('right'))
+print(serialize(node))
+print(deserialize(serialize(node)))
+# assert deserialize(serialize(node)).left.left.val == 'left.left'
 
 # My Second Answer NOTE: Had to look at the real answer
 class Node:
