@@ -18,3 +18,16 @@ def answer_division(nums):
   return result
 answer = answer_division(num_list)
 print(answer)
+
+# Without Division O(N^2)
+def answer_without_division(nums):
+  result = []
+  for i in range(len(nums)):
+    product = 1
+    for j in range(len(nums)):
+      if j != i:
+        product *= nums[j]
+    result.append(product)
+  return result
+answer = answer_without_division(num_list)
+print(answer)
