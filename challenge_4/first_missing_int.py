@@ -7,3 +7,19 @@ For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should g
 
 You can modify the input array in-place.
 '''
+
+# My Answer
+array_ints = [3,4,-1,1] # given arrays
+array_ints = [1,2,0]
+array_ints = [0,1,2,32,45,6,7,5,3] # testing if function works
+def find_lowest_missing_int(l):
+  l.sort()
+  smallest_num = 1
+  for num in l:
+    if num > 0 and smallest_num < num:
+      pass
+    elif num > 0 and smallest_num >= num:
+      smallest_num += 1
+  return smallest_num
+result = find_lowest_missing_int(array_ints)
+print(result)
