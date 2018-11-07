@@ -12,3 +12,19 @@ def cons(a, b):
 Implement car and cdr.
 '''
 
+# My Answer
+def cons(a, b):
+    def pair(f):
+        return f(a, b)
+    return pair
+def car(func):
+  def f(a, b):
+    return a
+  return func(f)
+def cdr(func):
+  def f(a, b):
+    return b
+  return func(f)
+
+print(car(cons(3, 4)))
+print(cdr(cons(3, 4)))
