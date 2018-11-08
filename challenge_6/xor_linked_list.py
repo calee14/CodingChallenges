@@ -7,6 +7,7 @@ If using a language that has no pointers (such as Python), you can assume you ha
 '''
 
 # This question can't be answered in python or java and since I don't know C or C++ I can't complete this one.
+# Got this solution from github
 '''
 ----------
        XOR
