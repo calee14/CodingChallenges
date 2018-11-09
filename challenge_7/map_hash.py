@@ -37,13 +37,17 @@ def decode_cnt_no_zero(msg_list):
     Returns:
         int
     '''
+    # if the length of the message is less than or equal to one then return 1 to the total amount of combinations.
     if len(msg_list) <= 1:
         return 1
-
+    # if the message has more than two digits
     if len(msg_list) >= 2:
+    	# check if the substring of first two is less than 26
         if 1 <= int(''.join(msg_list[0:2])) <= 26:
+        	# recursively check the amount of combinations there are in after the first digit and the second digit
             return  (decode_cnt_no_zero(msg_list[1:]) +
                         decode_cnt_no_zero(msg_list[2:]))
+        # if the list doesn't contain a number that is less than 26 then there isn't an letter that corresponds to that number
         return decode_cnt_no_zero(msg_list[1:])
 
 """
