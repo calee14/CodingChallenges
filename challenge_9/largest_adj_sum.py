@@ -7,6 +7,9 @@ For example, [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5.
 Follow-up: Can you do this in O(N) time and constant space?
 '''
 
+# I'm pretty sure I could try to make a O(N^2) function to solve this.
+
+# Correct Solution from github
 def find_max_sum(int_list):
     '''
     Use Dynamic Programming to find the max sum of non-adjacent numbers.
