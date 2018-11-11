@@ -12,6 +12,8 @@ For example, the following tree has 5 unival subtrees:
   / \
  1   1
  '''
+ # I didn't have time to solve this problem nor understand it enough to make a rough sketch for this challenge.
+ # Correct solution from github
 class Node(object):
     '''
     Tree Node
