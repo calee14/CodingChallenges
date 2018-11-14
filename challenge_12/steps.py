@@ -20,3 +20,41 @@ def solution(n):
 	if n < 1:
 		return 1
 	return solution(n-1) + solution(n-2)
+
+# Correct Answer
+def cache(func):
+    data = dict()
+    def wrapper(N, X):
+        if N in data:
+            return data[N]
+        else:
+            data[N] = func(N, X)
+            return data[N]
+    return wrapper
+
+
+@cache
+def climb_up(N, X):
+    '''
+    Dynamic Programming
+    Args:
+        N(int): a staircase with N steps
+        X(list): steps that are allowed
+    Returns:
+        int: number of ways to get to the top of the staircase
+    '''
+    if N <= 1:
+        return 1
+
+    num_ways = 0
+    for step in X:
+        if N >= step:
+            num_ways += climb_up(N - step, X)
+    return num_ways
+
+
+def main():
+    print climb_up(100, [1, 3, 5])
+
+if __name__ == '__main__':
+    main()
