@@ -9,12 +9,17 @@ You should be as efficient with time and space as possible.
 '''
 class OrdersLog(object):
     def __init__(self, num):
+        # set the number of elements we want to store
         self.circular_buffer = [None] * num
+        # set the index of the last element
         self.current_index = 0
 
     def record(self, order_id):
+        # set the order_id to the current index
         self.circular_buffer[self.current_index] = order_id
+        # increment the current index
         self.current_index += 1
+        # if there is no more available space then we wrap back to the 0th index
         if self.current_index == len(self.circular_buffer):
             self.current_index = 0
 
@@ -30,12 +35,12 @@ class OrdersLog(object):
 def main():
     N = 20
     log = OrdersLog(10)
-    for id in xrange(35):
+    for id in range(35):
         log.record(id)
-
+    
     assert(log.get_last(0) == [])
     assert(log.get_last(1) == [34])
-    assert(log.get_last(5) == range(30, 35))
+    assert(log.get_last(5) == list(range(30, 35)))
 
 if __name__ == '__main__':
     main()
