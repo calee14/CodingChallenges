@@ -37,11 +37,11 @@ class Node(object):
     Node of a Directory N-ary Tree
     '''
     def __init__(self, val=None, level=None, parent=None, is_file=False):
-        self.val = val
-        self.level = level
+        self.val = val # the name of the file or path
+        self.level = level # level the node is in the tree
         self.parent = parent
         self.subdir = list()    # Node's children as a list
-        self.is_file =is_file
+        self.is_file = is_file
 
     def add_node(self, node=None):
         self.subdir.append(node)
@@ -66,14 +66,14 @@ def build_tree(path_str):
     Returns:
         Tree: a directory tree
     '''
-    path_dir = path_str.split('\n')
+    path_dir = path_str.split('\n') # '\n' indicates there is a new file or folder
     dir_tree = Tree()
-    cur_level = -1
+    cur_level = -1 # root level
     cur_root = dir_tree.root
 
     for token in path_dir:
         tabs = 0
-        while token[tabs] == '\t':
+        while token[tabs] == '\t': # '\t' is the amount of tabs is the level of the file or folder
             tabs += 1
 
         if cur_level >= tabs:   # need to back track the parent node
@@ -87,9 +87,9 @@ def build_tree(path_str):
         else:   # not a file
             new_node = Node(token[tabs:], tabs, cur_root)
 
-        cur_root.add_node(new_node)
+        cur_root.add_node(new_node) # add the file or folder to the root of the tree
         cur_level = tabs
-        cur_root = new_node
+        cur_root = new_node # set the root to be the new node
 
     return dir_tree
 
@@ -97,6 +97,7 @@ def build_tree(path_str):
 def lgst_file_path(node):
     '''
     Given a tree node, find the longest absolute path to a file
+    The length is based off this path stlye: path/to/file
     Args:
         node(Node): a tree node
     Returns:
@@ -122,7 +123,7 @@ def main():
     path_str_2 = ('dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext' +
                     '\ndir2\n\tsubdir1\n\tsubdir2\n\t\tsubsubdir1\n\t\t\tsubsubsubdir3\n\t\t\t\tfile3.ext')
     tree = build_tree(path_str_2)
-    print lgst_file_path(tree.root)
+    print(lgst_file_path(tree.root))
 
 if __name__ == '__main__':
     main()
