@@ -15,15 +15,15 @@ def solution(costs):
     Returns:
         int
     '''
-    best_cost = [0] * len(costs[0])
+    best_cost = [0] * len(costs[0]) # this list will store the best costs
     for cost in costs:  # add a house at a time
-        temp_cost = [0] * len(costs[0])
-        for index in xrange(len(cost)):
+        temp_cost = [0] * len(costs[0]) # make an array of len(cost) 0's
+        for index in range(len(cost)):
             # best cost is the one for that color plus min cost between every other color
             temp_cost[index] = cost[index] + min(best_cost[:index] +
                                                     best_cost[index + 1:])
-        best_cost = temp_cost
-        print best_cost
+        best_cost = temp_cost # replace the old average costs 
+        print(best_cost)
 
     return min(best_cost)
 
@@ -32,7 +32,6 @@ def main():
     costs = [[2, 1, 1],
             [1, 10, 3],
             [1, 2, 100]]
-    print solution(costs)
-
+    print(solution(costs))
 if __name__ == '__main__':
     main()
