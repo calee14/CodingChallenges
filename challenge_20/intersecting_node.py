@@ -10,11 +10,11 @@ constant space.
 '''
 class Node(object):
     def __init__(self, val=None, next=None):
-        self.val = val
-        self.next = next
+        self.val = val # val of node
+        self.next = next # the next node in the list
 
     def add_node(self, node=None):
-        self.next = node
+        self.next = node # sets the next node of the list
         return node
 
 
@@ -39,7 +39,7 @@ def main():
     B = Node(99)
     A.add_node(Node(3)).add_node(Node(7)).add_node(Node(8)).add_node(Node(10))
     B.add_node(Node(99)).add_node(Node(1)).add_node(Node(8)).add_node(Node(10))
-    print find_intersection(A, B).val
+    print(find_intersection(A, B).val)
 
 
 if __name__ == '__main__':
